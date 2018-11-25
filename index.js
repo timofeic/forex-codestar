@@ -1,5 +1,6 @@
 'use strict';
 
+const ForexDataClient = require("forex-quotes");
 var fs = require('fs');
 var path = require('path');
 
