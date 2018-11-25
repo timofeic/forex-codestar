@@ -33,3 +33,16 @@ Resources:
           Properties:
             Path: /
             Method: get
+
+  quota:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: quota.get
+      Runtime: nodejs8.10
+      Role:
+        Fn::ImportValue:
+          !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']
+      KmsKeyArn: arn:aws:kms:eu-west-2:916609156224:key/67e74b67-ae0d-46b6-94df-296a305ad2ea
+      Environment:
+        Variables:
+          forexAPIKey: 'AQICAHgoSPqZ7w3ygzcJQN3g21eDlhdZ98h8hvRLzYQGPzhfbgFYRKXzic9vCSoYHYSldjc1AAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMRS9aOSGEr2/iVVfrAgEQgDtFrWAeu3XRIefafESb7jrJhTHXbS+PufC6FGKzYtYDDsYboHpR7QICQEKmRtYEny5tc/RKmryt9ego/w=='
